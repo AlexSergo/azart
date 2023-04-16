@@ -12,10 +12,7 @@ import com.example.myapplication.bluetooth.BluetoothListItem
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.utils.PermissionTools
 import com.example.nativelib.AzartBluetooth
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity(), BluetoothActivityListener,
     BluetoothHandler by BluetoothHandlerImpl() {
@@ -66,7 +63,7 @@ class MainActivity : AppCompatActivity(), BluetoothActivityListener,
                     writeControl(controlData)
                 }
                 try {
-                    Thread.sleep(1)
+                    delay(1)
                 } catch (e: InterruptedException) {
                     throw java.lang.RuntimeException(e)
                 }
@@ -82,7 +79,7 @@ class MainActivity : AppCompatActivity(), BluetoothActivityListener,
                     // здесь мы получаем данные SDS от р/ст
                 }
                 try {
-                    Thread.sleep(100)
+                    delay(100)
                 } catch (e: InterruptedException) {
                     throw java.lang.RuntimeException(e)
                 }
